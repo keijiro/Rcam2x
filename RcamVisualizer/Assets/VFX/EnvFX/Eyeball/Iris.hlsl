@@ -21,11 +21,11 @@ void Iris_float(float2 uv, float seed, out float4 output)
     bw = bw - smoothstep(0.8, 1.1, l);
 
     // Noise 1
-    float n1 = snoise(float2(phi * 30, l - t)) + 0.5;
+    float n1 = SimplexNoise(float2(phi * 30, l - t)) + 0.5;
     n1 *= 1 - smoothstep(0, 0.5, abs(l - 0.5));
 
     // Noise 2
-    float n2 = snoise(float2(phi * 50, l - t * 1.3)) + 0.5;
+    float n2 = SimplexNoise(float2(phi * 50, l - t * 1.3)) + 0.5;
     float l_n2 = (l - core_r) / (1 - core_r);
     n2 *= 1 - smoothstep(0, 0.6, abs(l_n2 - 0.5));
 

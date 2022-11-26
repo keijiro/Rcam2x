@@ -47,6 +47,7 @@ class VFXRcamMetadataBinder : VFXBinderBase
         var recv = Singletons.Receiver;
         var prj = ProjectionUtil.VectorFromReceiver;
         var v2w = Singletons.Receiver.CameraToWorldMatrix;
+        if (recv.ColorTexture == null) return;
         component.SetTexture(_colorMapProperty, recv.ColorTexture);
         component.SetTexture(_depthMapProperty, recv.DepthTexture);
         component.SetVector4(_projectionVectorProperty, prj);

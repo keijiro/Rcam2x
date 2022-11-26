@@ -20,6 +20,8 @@ VisualEffectResource:
     m_PreWarmDeltaTime: 0.05
     m_PreWarmStepCount: 0
     m_InitialEventName: OnPlay
+    m_InstancingMode: -1
+    m_InstancingCapacity: 64
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32,6 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
   m_Name: Set Random Angle
   m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
   m_Children:
   - {fileID: 4}
@@ -41,8 +44,8 @@ MonoBehaviour:
   m_UIInfos: {fileID: 3}
   m_ParameterInfo: []
   m_ImportDependencies: []
-  m_GraphVersion: 4
-  m_saved: 1
+  m_GraphVersion: 12
+  m_ResourceVersion: 1
   m_SubgraphDependencies: []
   m_CategoryPath: 
 --- !u!114 &3
@@ -78,9 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ccbcffb53f0c14197bd55400d92b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
   m_Parent: {fileID: 2}
-  m_Children:
-  - {fileID: 0}
+  m_Children: []
   m_UIPosition: {x: 941.3827, y: 114.57214}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -91,6 +94,7 @@ MonoBehaviour:
   m_InputFlowSlot: []
   m_OutputFlowSlot:
   - link: []
+  m_SuitableContexts: 26
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 2}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -115,4 +120,6 @@ MonoBehaviour:
   capacity: 128
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0

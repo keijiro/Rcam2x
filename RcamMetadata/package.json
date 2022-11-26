@@ -1,6 +1,6 @@
 {
     "author": "Keijiro Takahashi",
-    "dependencies": { "org.nuget.system.memory": "4.5.3" },
+    "dependencies": { },
     "description": "Defines the Rcam2 metadata structure.",
     "displayName": "Rcam2 Metadata",
     "keywords": [ "unity" ],

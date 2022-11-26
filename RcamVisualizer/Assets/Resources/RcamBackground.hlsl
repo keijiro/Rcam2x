@@ -38,7 +38,7 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     float3 np2 = float3(wpos.y * 32, 0, _Time.y * 2) * 0.8;
 
     // Potential value
-    float pt = (luma - 0.5) + snoise(np1) + snoise(np2);
+    float pt = (luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2);
 
     // Grayscale
     float gray = abs(pt) < _EffectParams.x + 0.02;
@@ -63,7 +63,7 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     np += float3(0, -0.784, 0) * _Time.y;
 
     // Potential value
-    float pt = 0.5 + (luma - 0.5) * 0.4 + snoise(np) * 0.7;
+    float pt = 0.5 + (luma - 0.5) * 0.4 + SimplexNoise(np) * 0.7;
 
     // Random seed
     uint seed = (uint)(pt * 5 + _Time.y * 5) * 2;
