@@ -1681,21 +1681,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494380644}
   m_CullTransparentMesh: 0
---- !u!115 &509491569
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 2
-  m_ExecutionOrder: 0
-  m_ClassName: VFXRcamMetadataBinder
-  m_Namespace: Rcam2
-  m_AssemblyName: 
 --- !u!1 &643685938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,9 +1693,9 @@ GameObject:
   - component: {fileID: 643685944}
   - component: {fileID: 643685943}
   - component: {fileID: 643685942}
-  - component: {fileID: 643685941}
   - component: {fileID: 643685945}
   - component: {fileID: 643685940}
+  - component: {fileID: 643685946}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -1748,18 +1733,6 @@ MonoBehaviour:
   _controlType: 1
   _controlNumber: 3
   _delayTillOff: 4
---- !u!114 &643685941
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643685938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &643685942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,6 +1748,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 0
   m_Bindings:
   - {fileID: 643685945}
+  - {fileID: 643685946}
   m_VisualEffect: {fileID: 643685944}
 --- !u!73398921 &643685943
 VFXRenderer:
@@ -1903,6 +1877,26 @@ MonoBehaviour:
   _property:
     m_Name: Throttle
   ControlNumber: 3
+--- !u!114 &643685946
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643685938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &647287308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,9 +2023,9 @@ GameObject:
   - component: {fileID: 651696154}
   - component: {fileID: 651696153}
   - component: {fileID: 651696152}
-  - component: {fileID: 651696151}
   - component: {fileID: 651696155}
   - component: {fileID: 651696150}
+  - component: {fileID: 651696156}
   m_Layer: 0
   m_Name: Dot
   m_TagString: Untagged
@@ -2069,18 +2063,6 @@ MonoBehaviour:
   _controlType: 1
   _controlNumber: 0
   _delayTillOff: 3
---- !u!114 &651696151
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651696148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &651696152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,6 +2078,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 0
   m_Bindings:
   - {fileID: 651696155}
+  - {fileID: 651696156}
   m_VisualEffect: {fileID: 651696154}
 --- !u!73398921 &651696153
 VFXRenderer:
@@ -2224,6 +2207,26 @@ MonoBehaviour:
   _property:
     m_Name: Throttle
   ControlNumber: 0
+--- !u!114 &651696156
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651696148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &663884550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2549,7 @@ GameObject:
   - component: {fileID: 697339486}
   - component: {fileID: 697339485}
   - component: {fileID: 697339484}
-  - component: {fileID: 697339483}
+  - component: {fileID: 697339487}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -2569,18 +2572,6 @@ Transform:
   m_Father: {fileID: 384911837}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697339483
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697339480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &697339484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,6 +2699,26 @@ VisualEffect:
       - m_Value: 0
         m_Name: Enabled
         m_Overridden: 1
+--- !u!114 &697339487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697339480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &707981754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,9 +3411,9 @@ GameObject:
   - component: {fileID: 937118157}
   - component: {fileID: 937118156}
   - component: {fileID: 937118155}
-  - component: {fileID: 937118154}
   - component: {fileID: 937118153}
   - component: {fileID: 937118152}
+  - component: {fileID: 937118158}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -3455,18 +3466,6 @@ MonoBehaviour:
   _property:
     m_Name: Throttle
   ControlNumber: 7
---- !u!114 &937118154
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937118150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &937118155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3482,6 +3481,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 0
   m_Bindings:
   - {fileID: 937118153}
+  - {fileID: 937118158}
   m_VisualEffect: {fileID: 937118157}
 --- !u!73398921 &937118156
 VFXRenderer:
@@ -3595,6 +3595,26 @@ VisualEffect:
       - m_Value: 0
         m_Name: Enabled
         m_Overridden: 1
+--- !u!114 &937118158
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937118150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &969529204
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,9 +5671,9 @@ GameObject:
   - component: {fileID: 1431082125}
   - component: {fileID: 1431082124}
   - component: {fileID: 1431082123}
-  - component: {fileID: 1431082122}
   - component: {fileID: 1431082121}
   - component: {fileID: 1431082120}
+  - component: {fileID: 1431082126}
   m_Layer: 0
   m_Name: Glitch
   m_TagString: Untagged
@@ -5706,18 +5726,6 @@ MonoBehaviour:
   _property:
     m_Name: Throttle
   ControlNumber: 4
---- !u!114 &1431082122
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431082118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1431082123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5733,6 +5741,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 0
   m_Bindings:
   - {fileID: 1431082121}
+  - {fileID: 1431082126}
   m_VisualEffect: {fileID: 1431082125}
 --- !u!73398921 &1431082124
 VFXRenderer:
@@ -5846,6 +5855,26 @@ VisualEffect:
       - m_Value: 0
         m_Name: Enabled
         m_Overridden: 1
+--- !u!114 &1431082126
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431082118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &1450815646
 GameObject:
   m_ObjectHideFlags: 0
@@ -6467,9 +6496,9 @@ GameObject:
   - component: {fileID: 1730251425}
   - component: {fileID: 1730251424}
   - component: {fileID: 1730251423}
-  - component: {fileID: 1730251422}
   - component: {fileID: 1730251421}
   - component: {fileID: 1730251420}
+  - component: {fileID: 1730251426}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -6522,18 +6551,6 @@ MonoBehaviour:
   _property:
     m_Name: Throttle
   ControlNumber: 5
---- !u!114 &1730251422
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730251418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 509491569}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1730251423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6549,6 +6566,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 0
   m_Bindings:
   - {fileID: 1730251421}
+  - {fileID: 1730251426}
   m_VisualEffect: {fileID: 1730251425}
 --- !u!73398921 &1730251424
 VFXRenderer:
@@ -6662,6 +6680,26 @@ VisualEffect:
       - m_Value: 0
         m_Name: Enabled
         m_Overridden: 1
+--- !u!114 &1730251426
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730251418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35d77b23b916b47802dd6509e3f28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorMapProperty:
+    m_Name: ColorMap
+  _depthMapProperty:
+    m_Name: DepthMap
+  _projectionVectorProperty:
+    m_Name: ProjectionVector
+  _inverseViewMatrixProperty:
+    m_Name: InverseViewMatrix
 --- !u!1 &1755712482
 GameObject:
   m_ObjectHideFlags: 0
