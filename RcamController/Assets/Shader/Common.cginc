@@ -77,6 +77,7 @@ float4 Fragment(float4 vertex : SV_Position,
 
     // Texture transform
     float2 uv = mul(float3(texCoord, 1), _UnityDisplayTransform).xy;
+    uv = (uv - 0.5) / _AspectFix + 0.5;
 
     // Texture samples
     float y = tex2D(_textureY, uv).x;
@@ -92,7 +93,7 @@ float4 Fragment(float4 vertex : SV_Position,
     srgb = lerp(float3(0.2, 0.2, 0.5) * y, srgb, mask);
 
     // Letterboxing with 16:9
-    srgb *= abs(uv.y - 0.5) * 2 < _AspectFix ? 1 : 0.5;
+    srgb *= 0 < uv.x && uv.x < 1;
 
     // Output
     return float4(GammaToLinearSpace(srgb), 1);
