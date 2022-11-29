@@ -11,6 +11,10 @@ float4x4 _UnityDisplayTransform;
 float2 _DepthRange;
 float _AspectFix;
 
+// Rcam constants
+static const float DepthHueMargin = 0.01;
+static const float DepthHuePadding = 0.01;
+
 // Hue encoding
 float3 Hue2RGB(float hue)
 {
@@ -19,6 +23,19 @@ float3 Hue2RGB(float hue)
     float g = 2 - abs(h);
     float b = 2 - abs(h - 2);
     return saturate(float3(r, g, b));
+}
+
+// Depth encoding
+float3 EncodeDepth(float depth, float2 range)
+{
+    // Depth range
+    depth = (depth - range.x) / (range.y - range.x);
+    // Padding
+    depth = depth * (1 - DepthHuePadding * 2) + DepthHuePadding;
+    // Margin
+    depth = saturate(depth) * (1 - DepthHueMargin * 2) + DepthHueMargin;
+    // Hue encoding
+    return Hue2RGB(depth);
 }
 
 // yCbCr decoding
@@ -61,8 +78,7 @@ float4 Fragment(float4 vertex : SV_Position,
     float3 c1 = YCbCrToSRGB(y, cbcr);
 
     // Depth plane
-    depth = (depth - _DepthRange.x) / (_DepthRange.y - _DepthRange.x);
-    float3 c2 = Hue2RGB(clamp(depth, 0, 0.8));
+    float3 c2 = EncodeDepth(depth, _DepthRange);
 
     // Mask plane
     float3 c3 = mask;

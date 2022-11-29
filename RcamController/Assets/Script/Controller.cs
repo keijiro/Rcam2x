@@ -138,6 +138,7 @@ sealed class Controller : MonoBehaviour
 
         // Render texture for the NDI source
         _senderRT = new RenderTexture(_width, _height, 0);
+        _senderRT.wrapMode = TextureWrapMode.Clamp;
         _senderRT.Create();
 
         // NDI sender instantiation

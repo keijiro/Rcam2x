@@ -106,6 +106,8 @@ sealed class RcamReceiver : MonoBehaviour
         var h = source.height / 2;
         _textures.color = new RenderTexture(w, h * 2, 0);
         _textures.depth = new RenderTexture(w, h, 0, RenderTextureFormat.RHalf);
+        _textures.color.wrapMode = TextureWrapMode.Clamp;
+        _textures.depth.wrapMode = TextureWrapMode.Clamp;
     }
 
     #endregion
