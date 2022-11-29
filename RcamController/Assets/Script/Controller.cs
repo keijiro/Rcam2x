@@ -1,6 +1,4 @@
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using Klak.Ndi;
 
@@ -40,13 +38,9 @@ sealed class Controller : MonoBehaviour
     const int _height = 1024;
 
     NdiSender _ndiSender;
-
     Matrix4x4 _projection;
-
-    Material _bgMaterial;
-    Material _muxMaterial;
-
     RenderTexture _senderRT;
+    (Material bg, Material mux) _material;
 
     #endregion
 
@@ -81,9 +75,9 @@ sealed class Controller : MonoBehaviour
             var id = args.propertyNameIds[i];
             var tex = args.textures[i];
             if (id == ShaderID.TextureY)
-                _muxMaterial.SetTexture(ShaderID.TextureY, tex);
+                _material.mux.SetTexture(ShaderID.TextureY, tex);
             else if (id == ShaderID.TextureCbCr)
-                _muxMaterial.SetTexture(ShaderID.TextureCbCr, tex);
+                _material.mux.SetTexture(ShaderID.TextureCbCr, tex);
         }
 
         // Try receiving the projection matrix.
@@ -101,8 +95,8 @@ sealed class Controller : MonoBehaviour
 
         // Aspect ratio compensation factor for the multiplexer
         var aspectFix = texAspect / (16.0f / 9);
-        _bgMaterial.SetFloat(ShaderID.AspectFix, aspectFix);
-        _muxMaterial.SetFloat(ShaderID.AspectFix, aspectFix);
+        _material.bg.SetFloat(ShaderID.AspectFix, aspectFix);
+        _material.mux.SetFloat(ShaderID.AspectFix, aspectFix);
     }
 
     void OnOcclusionFrameReceived(AROcclusionFrameEventArgs args)
@@ -113,9 +107,9 @@ sealed class Controller : MonoBehaviour
             var id = args.propertyNameIds[i];
             var tex = args.textures[i];
             if (id == ShaderID.HumanStencil)
-                _muxMaterial.SetTexture(ShaderID.HumanStencil, tex);
+                _material.mux.SetTexture(ShaderID.HumanStencil, tex);
             else if (id == ShaderID.EnvironmentDepth)
-                _muxMaterial.SetTexture(ShaderID.EnvironmentDepth, tex);
+                _material.mux.SetTexture(ShaderID.EnvironmentDepth, tex);
         }
     }
 
@@ -126,14 +120,12 @@ sealed class Controller : MonoBehaviour
     void Start()
     {
         // Shader setup
-        _bgMaterial = new Material(_shader);
-        _bgMaterial.EnableKeyword("RCAM_MONITOR");
-
-        _muxMaterial = new Material(_shader);
-        _muxMaterial.EnableKeyword("RCAM_MULTIPLEXER");
+        _material = (new Material(_shader), new Material(_shader));
+        _material.bg.EnableKeyword("RCAM_MONITOR");
+        _material.mux.EnableKeyword("RCAM_MULTIPLEXER");
 
         // Custom background material
-        _cameraBackground.customMaterial = _bgMaterial;
+        _cameraBackground.customMaterial = _material.bg;
         _cameraBackground.useCustomMaterial = true;
 
         // Render texture for the NDI source
@@ -151,8 +143,8 @@ sealed class Controller : MonoBehaviour
 
     void OnDestroy()
     {
-        Destroy(_bgMaterial);
-        Destroy(_muxMaterial);
+        Destroy(_material.bg);
+        Destroy(_material.mux);
         Destroy(_senderRT);
     }
 
@@ -174,11 +166,11 @@ sealed class Controller : MonoBehaviour
     {
         // Parameter update
         var range = new Vector2(_minDepth, _maxDepth);
-        _bgMaterial.SetVector(ShaderID.DepthRange, range);
-        _muxMaterial.SetVector(ShaderID.DepthRange, range);
+        _material.bg.SetVector(ShaderID.DepthRange, range);
+        _material.mux.SetVector(ShaderID.DepthRange, range);
 
         // NDI sender RT update
-        Graphics.Blit(null, _senderRT, _muxMaterial, 0);
+        Graphics.Blit(null, _senderRT, _material.mux, 0);
     }
 
     //
