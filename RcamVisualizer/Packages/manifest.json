@@ -17,6 +17,8 @@
     "jp.keijiro.klak.ndi": "2.1.0",
     "jp.keijiro.noiseshader": "2.0.0",
     "jp.keijiro.rcam2.metadata": "file:../../RcamMetadata",
-    "jp.keijiro.test-assets": "1.0.1"
+    "jp.keijiro.shadergraphassets": "2.5.1",
+    "jp.keijiro.test-assets": "1.0.1",
+    "jp.keijiro.vfxgraphassets": "1.1.2"
   }
 }
