@@ -3103,7 +3103,7 @@ GameObject:
   - component: {fileID: 831220504}
   - component: {fileID: 831220503}
   m_Layer: 0
-  m_Name: Particle
+  m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6106,7 +6106,7 @@ GameObject:
   - component: {fileID: 1450815651}
   - component: {fileID: 1450815650}
   m_Layer: 0
-  m_Name: Petal
+  m_Name: Petals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
