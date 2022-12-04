@@ -91,7 +91,7 @@ MonoBehaviour:
     x: -29
     y: -513
     width: 2462
-    height: 2954
+    height: 2988
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,7 +244,7 @@ VisualEffectResource:
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
-      motionVectorGenerationMode: 0
+      motionVectorGenerationMode: 1
       shadowCastingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
@@ -787,7 +787,7 @@ MonoBehaviour:
   - link: []
   blendMode: 3
   useAlphaClipping: 1
-  generateMotionVector: 0
+  generateMotionVector: 1
   excludeFromTAA: 0
   sortingPriority: 0
   m_SubOutputs:
