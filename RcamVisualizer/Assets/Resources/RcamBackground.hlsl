@@ -13,8 +13,8 @@ float4 _EffectParams; // param, intensity, sin(r), cos(r)
 // Linear distance to Z depth
 float DistanceToDepth(float d)
 {
-    return d < _ProjectionParams.y ? 0 :
-      (0.5 / _ZBufferParams.z * (1 / d - _ZBufferParams.w));
+    float4 cp = mul(UNITY_MATRIX_P, float4(0, 0, -d, 1));
+    return cp.z / cp.w;
 }
 
 // Inversion projection into the world space
@@ -166,5 +166,5 @@ void FullScreenPass(Varyings varyings,
 
     // Output
     outColor = c;
-    outDepth = DistanceToDepth(d) * mask + _DepthOffset;
+    outDepth = DistanceToDepth(d + _DepthOffset) * mask;
 }
