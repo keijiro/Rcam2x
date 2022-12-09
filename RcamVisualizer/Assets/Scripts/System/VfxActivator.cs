@@ -25,7 +25,7 @@ public sealed class VfxActivator : MonoBehaviour
     float _delay;
 
     void Start()
-      => _vfx = GetComponent<VisualEffect>();
+      => (_vfx, _delay) = (GetComponent<VisualEffect>(), 1e+5f);
 
     void Update()
     {

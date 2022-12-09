@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 7
+  _controlNumber: 6
   _onEvent:
     m_PersistentCalls:
       m_Calls:
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 1
+  _controlNumber: 6
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 0
+  _controlNumber: 5
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -884,15 +884,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 651696149}
-  - {fileID: 909593435}
-  - {fileID: 1352278694}
-  - {fileID: 1034916019}
-  - {fileID: 643685939}
-  - {fileID: 1431082119}
   - {fileID: 1730251419}
+  - {fileID: 643685939}
+  - {fileID: 651696149}
+  - {fileID: 1431082119}
+  - {fileID: 1352278694}
   - {fileID: 392662324}
+  - {fileID: 1034916019}
   - {fileID: 937118151}
+  - {fileID: 909593435}
   m_Father: {fileID: 555934366}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 6
+  _controlNumber: 5
   _delayTillOff: 0
 --- !u!114 &392662326
 MonoBehaviour:
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 6
+  ControlNumber: 5
 --- !u!1 &423074879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 19
+  _controlNumber: 18
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 18
+  _controlNumber: 17
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 17
+  _controlNumber: 16
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 20
+  _controlNumber: 19
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -1660,8 +1660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 3
-  _delayTillOff: 4
+  _controlNumber: 1
+  _delayTillOff: 2
 --- !u!114 &643685942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 3
+  ControlNumber: 1
 --- !u!114 &643685946
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 0
+  _controlNumber: 2
   _delayTillOff: 3
 --- !u!114 &651696152
 MonoBehaviour:
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 0
+  ControlNumber: 2
 --- !u!114 &651696156
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2418,7 +2418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Yaw
-  ControlNumber: 16
+  ControlNumber: 15
 --- !u!114 &679123995
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 10
+  ControlNumber: 14
 --- !u!114 &679123996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,8 +2447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 10
-  _delayTillOff: 2
+  _controlNumber: 14
+  _delayTillOff: 1
 --- !u!114 &679123997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,7 +2631,7 @@ VisualEffect:
         m_Overridden: 1
 --- !u!114 &697339487
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2898,9 +2898,9 @@ Transform:
   - {fileID: 141300879}
   - {fileID: 831220500}
   - {fileID: 1450815647}
-  - {fileID: 679123991}
-  - {fileID: 969529205}
   - {fileID: 2007835055}
+  - {fileID: 969529205}
+  - {fileID: 679123991}
   m_Father: {fileID: 555934366}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2933,13 +2933,14 @@ GameObject:
   - component: {fileID: 830316450}
   - component: {fileID: 830316449}
   - component: {fileID: 830316448}
+  - component: {fileID: 830316452}
   m_Layer: 0
   m_Name: Glitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &830316447
 Transform:
   m_ObjectHideFlags: 0
@@ -3038,7 +3039,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830316446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Asset: {fileID: 8926484042661614526, guid: 23e3ce9949fae4d6d91d85762b0481af, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
@@ -3072,6 +3073,21 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!114 &830316452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830316446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2f62932c07aa43829901369ecdcb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlType: 2
+  _controlNumber: 0
+  _delayTillOff: 3
 --- !u!1 &831220499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,7 +3218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 8
+  _controlNumber: 10
   _delayTillOff: 8
 --- !u!114 &831220504
 MonoBehaviour:
@@ -3218,7 +3234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 8
+  ControlNumber: 10
 --- !u!114 &831220505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,13 +3264,14 @@ GameObject:
   - component: {fileID: 840523727}
   - component: {fileID: 840523726}
   - component: {fileID: 840523725}
+  - component: {fileID: 840523730}
   m_Layer: 0
-  m_Name: Voxels
+  m_Name: Voxel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &840523725
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3338,7 +3355,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840523724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Asset: {fileID: 8926484042661614526, guid: 4a1954c4f2f8b4af1a24ad245498f755, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
@@ -3384,6 +3401,21 @@ Transform:
   m_Father: {fileID: 1692387269}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840523730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840523724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2f62932c07aa43829901369ecdcb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlType: 2
+  _controlNumber: 2
+  _delayTillOff: 2
 --- !u!1 &908129398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,8 +3497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 1
-  _delayTillOff: 2
+  _controlNumber: 8
+  _delayTillOff: 1
 --- !u!114 &909593437
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3627,7 +3659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 1
+  ControlNumber: 8
 --- !u!1 &937118150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,7 +3711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controlType: 1
   _controlNumber: 7
-  _delayTillOff: 3
+  _delayTillOff: 5
 --- !u!114 &937118153
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3893,7 +3925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 14
+  _controlNumber: 13
   _delayTillOff: 5
 --- !u!114 &969529207
 MonoBehaviour:
@@ -3909,7 +3941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 14
+  ControlNumber: 13
 --- !u!114 &969529208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4060,7 +4092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 2
+  _controlNumber: 6
   _delayTillOff: 2
 --- !u!114 &1034916021
 MonoBehaviour:
@@ -4222,7 +4254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 2
+  ControlNumber: 6
 --- !u!1 &1042902101
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,7 +4610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 22
+  _controlNumber: 25
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -4606,7 +4638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 21
+  _controlNumber: 24
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -4758,7 +4790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 2
+  _controlNumber: 3
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -4786,7 +4818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 16
+  _controlNumber: 15
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -4988,13 +5020,14 @@ GameObject:
   - component: {fileID: 1166938551}
   - component: {fileID: 1166938550}
   - component: {fileID: 1166938552}
+  - component: {fileID: 1166938553}
   m_Layer: 0
-  m_Name: Particles
+  m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1166938547
 Transform:
   m_ObjectHideFlags: 0
@@ -5057,7 +5090,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166938546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Asset: {fileID: 8926484042661614526, guid: 3744f92c106b40645a0c64a5c7b2965d, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
@@ -5143,6 +5176,21 @@ MonoBehaviour:
   m_Property:
     m_Name: EffectOrigin
   Target: {fileID: 349727204}
+--- !u!114 &1166938553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166938546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2f62932c07aa43829901369ecdcb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlType: 2
+  _controlNumber: 1
+  _delayTillOff: 2
 --- !u!1 &1228293666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5697,7 +5745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 24
+  ControlNumber: 4
 --- !u!114 &1352278696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5711,8 +5759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 24
-  _delayTillOff: 2
+  _controlNumber: 4
+  _delayTillOff: 4
 --- !u!114 &1352278697
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5909,7 +5957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 4
+  _controlNumber: 3
   _delayTillOff: 0
 --- !u!114 &1431082121
 MonoBehaviour:
@@ -5925,7 +5973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 4
+  ControlNumber: 3
 --- !u!114 &1431082123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6206,7 +6254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 9
+  ControlNumber: 11
 --- !u!114 &1450815651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6220,7 +6268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 9
+  _controlNumber: 11
   _delayTillOff: 8
 --- !u!114 &1450815652
 MonoBehaviour:
@@ -6435,9 +6483,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 697339481}
   - {fileID: 830316447}
   - {fileID: 1166938547}
+  - {fileID: 697339481}
   - {fileID: 840523729}
   m_Father: {fileID: 555934366}
   m_RootOrder: -1
@@ -6601,7 +6649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 5
+  _controlNumber: 0
   _delayTillOff: 1
 --- !u!114 &1730251421
 MonoBehaviour:
@@ -6617,7 +6665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Throttle
-  ControlNumber: 5
+  ControlNumber: 0
 --- !u!114 &1730251423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7823,7 +7871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlType: 1
-  _controlNumber: 23
+  _controlNumber: 12
   _delayTillOff: 4
 --- !u!114 &2007835059
 MonoBehaviour:
@@ -7839,7 +7887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _property:
     m_Name: Thickness
-  ControlNumber: 23
+  ControlNumber: 12
 --- !u!114 &2007835060
 MonoBehaviour:
   m_ObjectHideFlags: 0
