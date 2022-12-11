@@ -7311,6 +7311,7 @@ MonoBehaviour:
   _dithering: 0.2
   _lineThreshold: 0.1
   _lineContrast: 6
+  _shader: {fileID: 4800000, guid: 250e50f4a625ad449af70f45279025a0, type: 3}
 --- !u!114 &1755712486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7424,6 +7425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992fe41d48d7b144fadd1bd73bced58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 7462f63691104b74c85ec3e78acf0e61, type: 3}
 --- !u!114 &1774963904
 MonoBehaviour:
   m_ObjectHideFlags: 0

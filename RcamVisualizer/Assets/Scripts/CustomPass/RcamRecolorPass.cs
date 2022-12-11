@@ -7,7 +7,6 @@ namespace Rcam2 {
 //
 // HDRP custom fullscreen pass for postprocessing recolor effects
 //
-[System.Serializable]
 sealed class RcamRecolorPass : CustomPass
 {
     #region Editable attributes
@@ -16,34 +15,12 @@ sealed class RcamRecolorPass : CustomPass
 
     #endregion
 
-    #region Runtime objects
-
-    Material _material;
-
-    #endregion
-
     #region CustomPass implementation
-
-    protected override void Setup
-      (ScriptableRenderContext renderContext, CommandBuffer cmd)
-    {
-        var shader = Resources.Load<Shader>("RcamRecolor");
-        _material = new Material(shader);
-        _material.hideFlags = HideFlags.DontSave;
-    }
 
     protected override void Execute(CustomPassContext context)
     {
         if (_controller == null || !_controller.IsActive) return;
-        CoreUtils.DrawFullScreen(context.cmd, _material, _controller.PropertyBlock, 0);
-    }
-
-    protected override void Cleanup()
-    {
-        if (Application.isPlaying)
-            Object.Destroy(_material);
-        else
-            Object.DestroyImmediate(_material);
+        CoreUtils.DrawFullScreen(context.cmd, _controller.SharedMaterial);
     }
 
     #endregion

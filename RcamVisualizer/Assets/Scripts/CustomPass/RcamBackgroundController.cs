@@ -1,5 +1,4 @@
 using UnityEngine;
-using Klak.Chromatics;
 
 namespace Rcam2 {
 
@@ -28,30 +27,35 @@ sealed class RcamBackgroundController : MonoBehaviour
 
     #endregion
 
-    #region Material property block
+    #region Shader and material
 
-    public MaterialPropertyBlock PropertyBlock => UpdatePropertyBlock();
+    [SerializeField] Shader _shader = null;
 
-    MaterialPropertyBlock _props;
+    Material _material;
 
-    MaterialPropertyBlock UpdatePropertyBlock()
+    public Material SharedMaterial => UpdateMaterial();
+
+    Material UpdateMaterial()
     {
-        if (_props == null) _props = new MaterialPropertyBlock();
+        if (_material == null) _material = new Material(_shader);
 
         var oparams = new Vector2(_backOpacity, _effectOpacity);
         var phi = EffectDirection * Mathf.PI * 2;
         var eparams = new Vector4
           (EffectParameter, EffectIntensity, Mathf.Sin(phi), Mathf.Cos(phi));
 
-        _props.SetVector("_Opacity", oparams);
-        _props.SetVector("_EffectParams", eparams);
+        _material.SetVector("_Opacity", oparams);
+        _material.SetVector("_EffectParams", eparams);
 
-        return _props;
+        return _material;
     }
 
     #endregion
 
     #region MonoBehaviour implementation
+
+    void OnDestroy()
+      => Destroy(_material);
 
     void Update()
     {

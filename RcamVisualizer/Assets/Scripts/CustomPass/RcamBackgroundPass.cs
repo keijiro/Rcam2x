@@ -7,7 +7,6 @@ namespace Rcam2 {
 //
 // HDRP custom fullscreen pass for drawing camera images
 //
-[System.Serializable]
 sealed class RcamBackgroundPass : CustomPass
 {
     #region Editable attributes
@@ -17,48 +16,26 @@ sealed class RcamBackgroundPass : CustomPass
 
     #endregion
 
-    #region Runtime objects
-
-    Material _material;
-
-    #endregion
-
     #region CustomPass implementation
-
-    protected override void Setup
-      (ScriptableRenderContext renderContext, CommandBuffer cmd)
-    {
-        var shader = Resources.Load<Shader>("RcamBackground");
-        _material = new Material(shader);
-        _material.hideFlags = HideFlags.DontSave;
-    }
 
     protected override void Execute(CustomPassContext context)
     {
         if (_controller == null || !_controller.IsActive) return;
 
         var recv = Singletons.Receiver;
+        if (recv == null || recv.ColorTexture == null) return;
+
         var prj = ProjectionUtil.VectorFromReceiver;
         var v2w = Singletons.Receiver.CameraToWorldMatrix;
 
-        if (recv == null || recv.ColorTexture == null) return;
+        var m = _controller.SharedMaterial;
+        m.SetVector(ShaderID.ProjectionVector, prj);
+        m.SetMatrix(ShaderID.InverseViewMatrix, v2w);
+        m.SetFloat(ShaderID.DepthOffset, _depthOffset ? 1e-7f : 0);
+        m.SetTexture(ShaderID.ColorTexture, recv.ColorTexture);
+        m.SetTexture(ShaderID.DepthTexture, recv.DepthTexture);
 
-        _material.SetVector(ShaderID.ProjectionVector, prj);
-        _material.SetMatrix(ShaderID.InverseViewMatrix, v2w);
-        _material.SetFloat(ShaderID.DepthOffset, _depthOffset ? 1e-7f : 0);
-        _material.SetTexture(ShaderID.ColorTexture, recv.ColorTexture);
-        _material.SetTexture(ShaderID.DepthTexture, recv.DepthTexture);
-
-        CoreUtils.DrawFullScreen
-          (context.cmd, _material, _controller.PropertyBlock, _controller.PassNumber);
-    }
-
-    protected override void Cleanup()
-    {
-        if (Application.isPlaying)
-            Object.Destroy(_material);
-        else
-            Object.DestroyImmediate(_material);
+        CoreUtils.DrawFullScreen(context.cmd, m, null, _controller.PassNumber);
     }
 
     #endregion

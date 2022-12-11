@@ -75,27 +75,29 @@ sealed class RcamRecolorController : MonoBehaviour
 
     #endregion
 
-    #region Material property block
+    #region Shader and material
 
-    public MaterialPropertyBlock PropertyBlock => UpdatePropertyBlock();
+    [SerializeField] Shader _shader = null;
 
-    MaterialPropertyBlock _props;
+    Material _material;
 
-    MaterialPropertyBlock UpdatePropertyBlock()
+    public Material SharedMaterial => UpdateMaterial();
+
+    Material UpdateMaterial()
     {
-        if (_props == null) _props = new MaterialPropertyBlock();
+        if (_material == null) _material = new Material(_shader);
 
         var fillParams = new Vector3(_backOpacity, _frontOpacity, _dithering);
         var lineParams = new Vector2(_lineThreshold, _lineContrast);
 
-        _props.SetLinearGradient("_BackGradient", _backGradient);
-        _props.SetLinearGradient("_FrontGradient", _frontGradient);
-        _props.SetVector("_FillParams", fillParams);
+        _material.SetLinearGradient("_BackGradient", _backGradient);
+        _material.SetLinearGradient("_FrontGradient", _frontGradient);
+        _material.SetVector("_FillParams", fillParams);
 
-        _props.SetColor("_LineColor", _lineColor);
-        _props.SetVector("_LineParams", lineParams);
+        _material.SetColor("_LineColor", _lineColor);
+        _material.SetVector("_LineParams", lineParams);
 
-        return _props;
+        return _material;
     }
 
     #endregion
@@ -104,6 +106,9 @@ sealed class RcamRecolorController : MonoBehaviour
 
     void Start()
       => RandomizeGradientsAndColors();
+
+    void OnDestroy()
+      => Destroy(_material);
 
     void Update()
     {
