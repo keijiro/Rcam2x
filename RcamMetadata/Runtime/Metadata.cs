@@ -28,10 +28,10 @@ public unsafe struct Metadata
     public InputState InputState;
 
     // Initial data constructor
-    public static Metadata InitialData =>
-      new Metadata { CameraRotation = Quaternion.identity,
-                     ProjectionMatrix = Matrix4x4.identity,
-                     DepthRange = new Vector2(0, 1) };
+    public static Metadata InitialData => new Metadata
+      { CameraRotation = Quaternion.identity,
+        ProjectionMatrix = Matrix4x4.Perspective(45, 16.0f / 9, 0.1f, 10),
+        DepthRange = new Vector2(0.1f, 10) };
 
     #endregion
 
