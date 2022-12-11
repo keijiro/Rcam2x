@@ -32,12 +32,10 @@ sealed class RcamRecolorPass : CustomPass
         _material.hideFlags = HideFlags.DontSave;
     }
 
-    protected override void Execute
-      (ScriptableRenderContext renderContext, CommandBuffer cmd,
-       HDCamera hdCamera, CullingResults cullingResult)
+    protected override void Execute(CustomPassContext context)
     {
         if (_controller == null || !_controller.IsActive) return;
-        CoreUtils.DrawFullScreen(cmd, _material, _controller.PropertyBlock, 0);
+        CoreUtils.DrawFullScreen(context.cmd, _material, _controller.PropertyBlock, 0);
     }
 
     protected override void Cleanup()

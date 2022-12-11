@@ -33,9 +33,7 @@ sealed class RcamBackgroundPass : CustomPass
         _material.hideFlags = HideFlags.DontSave;
     }
 
-    protected override void Execute
-      (ScriptableRenderContext renderContext, CommandBuffer cmd,
-       HDCamera hdCamera, CullingResults cullingResult)
+    protected override void Execute(CustomPassContext context)
     {
         if (_controller == null || !_controller.IsActive) return;
 
@@ -52,7 +50,7 @@ sealed class RcamBackgroundPass : CustomPass
         _material.SetTexture(ShaderID.DepthTexture, recv.DepthTexture);
 
         CoreUtils.DrawFullScreen
-          (cmd, _material, _controller.PropertyBlock, _controller.PassNumber);
+          (context.cmd, _material, _controller.PropertyBlock, _controller.PassNumber);
     }
 
     protected override void Cleanup()
