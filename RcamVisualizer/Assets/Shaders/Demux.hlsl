@@ -1,4 +1,11 @@
 sampler2D _MainTex;
+float4 _MainTex_TexelSize;
+
+float2 TC2UV(float2 uv, float2 scale, float2 offset)
+{
+    float2 halfOffs = _MainTex_TexelSize.xy / 2;
+    return (uv + halfOffs) * scale + offset - halfOffs;
+}
 
 void Vertex(float4 vertex : POSITION,
             float2 texCoord : TEXCOORD,
@@ -14,8 +21,8 @@ void Vertex(float4 vertex : POSITION,
 float4 Fragment(float4 vertex : SV_Position,
                 float2 texCoord : TEXCOORD0) : SV_Target
 {
-    float3 rgb = tex2D(_MainTex, texCoord * float2(0.5, 1)).xyz;
-    float mask = tex2D(_MainTex, texCoord / 2 + float2(0.5, 0)).x;
+    float3 rgb = tex2D(_MainTex, TC2UV(texCoord, float2(0.5, 1), 0)).xyz;
+    float mask = tex2D(_MainTex, TC2UV(texCoord, 0.5, float2(0.5, 0))).x;
     return float4(rgb, mask);
 }
 
@@ -66,7 +73,7 @@ float RGB2Depth(float3 rgb)
 float4 Fragment(float4 vertex : SV_Position,
                 float2 texCoord : TEXCOORD) : SV_Target
 {
-    float3 rgb = tex2D(_MainTex, texCoord / 2 + float2(0.5, 0.5)).xyz;
+    float3 rgb = tex2D(_MainTex, TC2UV(texCoord, 0.5, 0.5)).xyz;
     return DecodeDepth(LinearToSRGB(rgb), _DepthRange);
 }
 
