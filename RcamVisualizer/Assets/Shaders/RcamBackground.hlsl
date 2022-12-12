@@ -6,7 +6,7 @@ sampler2D _DepthTexture;
 float4 _ProjectionVector;
 float4x4 _InverseViewMatrix;
 
-float3 _Opacity; // Background, Front, Effect
+float3 _Opacity; // background, front, effect
 float4 _EffectParams; // param, intensity, sin(r), cos(r)
 
 // Linear distance to Z depth
@@ -16,7 +16,7 @@ float DistanceToDepth(float d)
     return cp.z / cp.w;
 }
 
-// Inversion projection into the world space
+// Inverse projection into the world space
 float3 DistanceToWorldPosition(float2 uv, float d)
 {
     float3 p = float3((uv - 0.5) * 2, -1);
@@ -33,20 +33,21 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     // Animated zebra
 
     // Noise field positions
-    float3 np1 = float3(wpos.y * 16, 0, _Time.y);
-    float3 np2 = float3(wpos.y * 32, 0, _Time.y * 2) * 0.8;
+    float np1 = wpos.y *  4 - _Time.y * 1.4;
+    float np2 = wpos.y * 16 - _Time.y * 6.8;
 
     // Potential value
-    float pt = (luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2);
+    float pt = abs((luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2) / 4);
 
     // Grayscale
-    float gray = abs(pt) < _EffectParams.x + 0.02;
+    float thresh = _EffectParams.x;
+    float gray = 1 - smoothstep(thresh - 0.4, thresh - 0.01, pt);
 
-    // Emission
-    float em = _EffectParams.y * 4;
+    // Intensity
+    float i = 1 + _EffectParams.y * 8;
 
     // Output
-    return gray * (1 + em);
+    return gray * i;
 
 #endif
 
