@@ -156,127 +156,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &64243861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 64243862}
-  - component: {fileID: 64243865}
-  - component: {fileID: 64243864}
-  - component: {fileID: 64243863}
-  m_Layer: 0
-  m_Name: Control
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &64243862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64243861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1755712483}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &64243863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64243861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 6
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1755712485}
-        m_TargetAssemblyTypeName: Rcam2.RcamRecolorController, Assembly-CSharp
-        m_MethodName: ShuffleColors
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &64243864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64243861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 6
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1755712485}
-        m_TargetAssemblyTypeName: Rcam2.RcamRecolorController, Assembly-CSharp
-        m_MethodName: set_FrontFill
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &64243865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64243861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 5
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1755712485}
-        m_TargetAssemblyTypeName: Rcam2.RcamRecolorController, Assembly-CSharp
-        m_MethodName: set_BackFill
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &67799779
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +382,66 @@ Transform:
   - {fileID: 1774963902}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &286862592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286862595}
+  - component: {fileID: 286862594}
+  - component: {fileID: 286862593}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &286862593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286862592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &286862594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286862592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &286862595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286862592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337703191
 GameObject:
@@ -4937,281 +4876,6 @@ Transform:
   m_Father: {fileID: 161959045}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1049808513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1049808514}
-  - component: {fileID: 1049808522}
-  - component: {fileID: 1049808521}
-  - component: {fileID: 1049808520}
-  - component: {fileID: 1049808519}
-  - component: {fileID: 1049808518}
-  - component: {fileID: 1049808516}
-  - component: {fileID: 1049808515}
-  - component: {fileID: 1049808523}
-  m_Layer: 0
-  m_Name: Control
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1049808514
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1774963902}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1049808515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 25
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectIntensity
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1049808516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 24
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectParameter
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1049808518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 5
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectNumber
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1049808519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 4
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectNumber
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1049808520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 3
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectNumber
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1049808521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 2
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectNumber
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1049808522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff9354e24397ae46b4c7ce935b389f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 3
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_BackFill
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1049808523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049808513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5807d8923f0a4a4d8007884762c2837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controlNumber: 15
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1774963903}
-        m_TargetAssemblyTypeName: Rcam2.RcamBackgroundController, Assembly-CSharp
-        m_MethodName: set_EffectDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1068503948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7238,6 +6902,7 @@ GameObject:
   - component: {fileID: 1755712483}
   - component: {fileID: 1755712485}
   - component: {fileID: 1755712484}
+  - component: {fileID: 1755712487}
   - component: {fileID: 1755712486}
   m_Layer: 0
   m_Name: Rcam Recolor
@@ -7257,8 +6922,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 64243862}
+  m_Children: []
   m_Father: {fileID: 161959045}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7321,28 +6985,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755712482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15ae8dcaa86efa438e3f9823af7c907, type: 3}
+  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlNumber: 7
-  _onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1755712485}
-        m_TargetAssemblyTypeName: Rcam2.RcamRecolorController, Assembly-CSharp
-        m_MethodName: ShuffleColors
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _offEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _data:
+    _json: '{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{"Number":{"$content":5,"$type":"System.Int32"}},"position":{"x":-252.0,"y":-228.0},"guid":"555184ee-a3bc-48bf-b097-2e9f8ec4aa7b","$version":"A","$type":"Rcam2.RcamToggle","$id":"10"},{"coroutine":false,"defaultValues":{"Number":{"$content":6,"$type":"System.Int32"}},"position":{"x":-252.0,"y":-84.0},"guid":"d160eada-c4f6-4e37-96ab-ed8c24fe43c5","$version":"A","$type":"Rcam2.RcamToggle","$id":"12"},{"coroutine":false,"defaultValues":{"Number":{"$content":6,"$type":"System.Int32"}},"position":{"x":-252.0,"y":60.0},"guid":"118d8ac9-f15e-4a4a-a7bb-3f95517a856a","$version":"A","$type":"Rcam2.RcamButton","$id":"14"},{"chainable":false,"member":{"name":"BackFill","parameterTypes":null,"targetType":"Rcam2.RcamRecolorController","targetTypeName":"Rcam2.RcamRecolorController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":false,"$type":"System.Boolean"}},"position":{"x":-72.0,"y":-228.0},"guid":"1844c901-42cd-4eaa-898e-c21d0959e84b","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"16"},{"chainable":false,"member":{"name":"FrontFill","parameterTypes":null,"targetType":"Rcam2.RcamRecolorController","targetTypeName":"Rcam2.RcamRecolorController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":false,"$type":"System.Boolean"}},"position":{"x":-72.0,"y":-84.0},"guid":"715783ff-5c43-48df-b209-861e480926ed","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"19"},{"chainable":false,"member":{"name":"ShuffleColors","parameterTypes":[],"targetType":"Rcam2.RcamRecolorController","targetTypeName":"Rcam2.RcamRecolorController","$version":"A"},"defaultValues":{"target":null},"position":{"x":-72.0,"y":60.0},"guid":"9421ea65-c041-4459-8d08-2ce0789d899d","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"22"},{"sourceUnit":{"$ref":"10"},"sourceKey":"trigger","destinationUnit":{"$ref":"16"},"destinationKey":"assign","guid":"69d72190-8177-4705-bf60-afdf9f3cfa1a","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"12"},"sourceKey":"trigger","destinationUnit":{"$ref":"19"},"destinationKey":"assign","guid":"af4fb05d-a496-4a90-945c-c32a02d558ab","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"14"},"sourceKey":"trigger","destinationUnit":{"$ref":"22"},"destinationKey":"enter","guid":"4d8069ab-d706-4044-b5a5-4ed02860d50b","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"10"},"sourceKey":"Value","destinationUnit":{"$ref":"16"},"destinationKey":"input","guid":"50923cad-09b3-409f-99e3-c7ce47aa8421","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"12"},"sourceKey":"Value","destinationUnit":{"$ref":"19"},"destinationKey":"input","guid":"deab5304-f08e-47fd-ab8b-a1b3570729ee","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}}'
+    _objectReferences: []
+--- !u!114 &1755712487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755712482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1774963900
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,6 +7018,8 @@ GameObject:
   - component: {fileID: 1774963903}
   - component: {fileID: 1774963904}
   - component: {fileID: 1774963901}
+  - component: {fileID: 1774963906}
+  - component: {fileID: 1774963905}
   m_Layer: 0
   m_Name: Rcam Background
   m_TagString: Untagged
@@ -7396,7 +7061,6 @@ MonoBehaviour:
         passFoldout: 0
         m_Version: 0
         _controller: {fileID: 1774963903}
-        _depthOffset: 0
 --- !u!4 &1774963902
 Transform:
   m_ObjectHideFlags: 0
@@ -7408,8 +7072,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1049808514}
+  m_Children: []
   m_Father: {fileID: 161959045}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7460,7 +7123,36 @@ MonoBehaviour:
         passFoldout: 0
         m_Version: 0
         _controller: {fileID: 1774963903}
-        _depthOffset: 1
+--- !u!114 &1774963905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774963900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":201.2457,"y":289.2498},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{"Number":{"$content":3,"$type":"System.Int32"}},"position":{"x":-240.0,"y":-24.0},"guid":"9e28c138-44b0-49c7-bbd7-4eb9e3b1a35a","$version":"A","$type":"Rcam2.RcamToggle","$id":"10"},{"chainable":false,"member":{"name":"BackFill","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":false,"$type":"System.Boolean"}},"position":{"x":-48.0,"y":-24.0},"guid":"9870cc8c-c2df-41ae-bd96-3a26041a6c8a","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"12"},{"coroutine":false,"defaultValues":{"Number":{"$content":2,"$type":"System.Int32"}},"position":{"x":-240.0,"y":120.0},"guid":"bdccb0f9-776c-4eba-b382-74949b9a94b2","$version":"A","$type":"Rcam2.RcamButton","$id":"15"},{"coroutine":false,"defaultValues":{"Number":{"$content":15,"$type":"System.Int32"}},"position":{"x":240.0,"y":264.0},"guid":"9030a558-fb63-4d80-9cb2-aea54aca1ea2","$version":"A","$type":"Rcam2.RcamKnob","$id":"17"},{"coroutine":false,"defaultValues":{"Number":{"$content":25,"$type":"System.Int32"}},"position":{"x":240.0,"y":120.0},"guid":"15349a41-c167-4ca8-ab50-44fb896854af","$version":"A","$type":"Rcam2.RcamKnob","$id":"19"},{"coroutine":false,"defaultValues":{"Number":{"$content":24,"$type":"System.Int32"}},"position":{"x":240.0,"y":-24.0},"guid":"4ccd0317-5578-4275-b38f-328148104d03","$version":"A","$type":"Rcam2.RcamKnob","$id":"21"},{"chainable":false,"member":{"name":"EffectNumber","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":3,"$type":"System.Int32"}},"position":{"x":-48.0,"y":552.0},"guid":"41bfb5ab-aab2-4290-bbfd-f56a05c4801d","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"23"},{"chainable":false,"member":{"name":"EffectNumber","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":1,"$type":"System.Int32"}},"position":{"x":-48.0,"y":264.0},"guid":"0f4278df-1928-4701-aff6-73011b1e843f","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"26"},{"chainable":false,"member":{"name":"EffectNumber","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":2,"$type":"System.Int32"}},"position":{"x":-48.0,"y":408.0},"guid":"e4ec8b4d-4433-4b5c-9727-25fdaa789673","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"29"},{"chainable":false,"member":{"name":"EffectNumber","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":0,"$type":"System.Int32"}},"position":{"x":-48.0,"y":120.0},"guid":"65a0d766-0a20-4c75-9e0a-e864e712f936","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"32"},{"coroutine":false,"defaultValues":{"Number":{"$content":5,"$type":"System.Int32"}},"position":{"x":-240.0,"y":552.0},"guid":"4b153576-364b-42f5-ac9b-f5a31af032a5","$version":"A","$type":"Rcam2.RcamButton","$id":"35"},{"coroutine":false,"defaultValues":{"Number":{"$content":4,"$type":"System.Int32"}},"position":{"x":-240.0,"y":408.0},"guid":"340f2d21-ca51-4fad-8b7e-d605e7218017","$version":"A","$type":"Rcam2.RcamButton","$id":"37"},{"coroutine":false,"defaultValues":{"Number":{"$content":3,"$type":"System.Int32"}},"position":{"x":-240.0,"y":264.0},"guid":"784a08a0-9e53-4f68-aace-2f85ca2cacd0","$version":"A","$type":"Rcam2.RcamButton","$id":"39"},{"chainable":false,"member":{"name":"EffectIntensity","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":0.0,"$type":"System.Single"}},"position":{"x":432.0,"y":120.0},"guid":"de98d14f-07c3-4649-b7fb-048c2860b5dd","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"41"},{"chainable":false,"member":{"name":"EffectParameter","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":0.0,"$type":"System.Single"}},"position":{"x":432.0,"y":-24.0},"guid":"01ed5c97-f4e0-440f-a27e-8b75abcefa8e","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"44"},{"chainable":false,"member":{"name":"EffectDirection","parameterTypes":null,"targetType":"Rcam2.RcamBackgroundController","targetTypeName":"Rcam2.RcamBackgroundController","$version":"A"},"defaultValues":{"target":null,"input":{"$content":0.0,"$type":"System.Single"}},"position":{"x":432.0,"y":264.0},"guid":"c39cade7-c946-4b13-b083-93e071bb052b","$version":"A","$type":"Unity.VisualScripting.SetMember","$id":"47"},{"sourceUnit":{"$ref":"19"},"sourceKey":"trigger","destinationUnit":{"$ref":"41"},"destinationKey":"assign","guid":"37071d22-9c9f-471c-a487-2fa131f55cf5","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"21"},"sourceKey":"trigger","destinationUnit":{"$ref":"44"},"destinationKey":"assign","guid":"8edb35ca-1594-4a5a-94ee-4c9c9fbadbe9","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"37"},"sourceKey":"trigger","destinationUnit":{"$ref":"29"},"destinationKey":"assign","guid":"32815f27-216b-4c90-a44f-c7430712c8b8","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"35"},"sourceKey":"trigger","destinationUnit":{"$ref":"23"},"destinationKey":"assign","guid":"44d59d40-1f54-4fb4-87da-7428a6ff2260","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"17"},"sourceKey":"trigger","destinationUnit":{"$ref":"47"},"destinationKey":"assign","guid":"2fa676ed-ae2c-4202-bfe7-0e1ee22ddc1a","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"39"},"sourceKey":"trigger","destinationUnit":{"$ref":"26"},"destinationKey":"assign","guid":"5dfd65cd-c4ad-4546-9109-b91b2c6b0685","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"trigger","destinationUnit":{"$ref":"32"},"destinationKey":"assign","guid":"d723d5ca-d559-4bc1-801f-a2db9d205487","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"10"},"sourceKey":"trigger","destinationUnit":{"$ref":"12"},"destinationKey":"assign","guid":"11e11dd2-664b-4349-8e6b-c53d31384647","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"21"},"sourceKey":"Value","destinationUnit":{"$ref":"44"},"destinationKey":"input","guid":"b98c64b7-ae49-4e34-8d6b-11193267ced2","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"10"},"sourceKey":"Value","destinationUnit":{"$ref":"12"},"destinationKey":"input","guid":"cc312617-1c37-4f38-acc6-e20fce4d147b","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"Value","destinationUnit":{"$ref":"41"},"destinationKey":"input","guid":"523cb8f0-6501-440b-8f42-9749f2e0a470","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"17"},"sourceKey":"Value","destinationUnit":{"$ref":"47"},"destinationKey":"input","guid":"f318d8d6-5029-4c07-a425-914ca73dfe21","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}}'
+    _objectReferences: []
+--- !u!114 &1774963906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774963900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1837650423
 GameObject:
   m_ObjectHideFlags: 0

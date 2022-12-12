@@ -6,7 +6,7 @@ namespace Rcam2 {
 //
 // Controller and data provider for RcamRecolorPass
 //
-sealed class RcamRecolorController : MonoBehaviour
+public sealed class RcamRecolorController : MonoBehaviour
 {
     #region Editable attributes
 

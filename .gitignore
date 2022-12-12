@@ -20,3 +20,7 @@ Desktop.ini
 
 # Xcode
 /RcamController/Xcode
+
+# Visual Scripting
+/RcamVisualizer/Assets/Unity.VisualScripting.Generated/
+/RcamVisualizer/Assets/Unity.VisualScripting.Generated.meta

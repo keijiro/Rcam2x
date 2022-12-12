@@ -5,7 +5,7 @@ namespace Rcam2 {
 //
 // Controller and data provider for RcamBackgroundPass
 //
-sealed class RcamBackgroundController : MonoBehaviour
+public sealed class RcamBackgroundController : MonoBehaviour
 {
     #region Public properties
 
