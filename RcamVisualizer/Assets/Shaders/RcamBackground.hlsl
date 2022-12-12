@@ -6,7 +6,7 @@ sampler2D _DepthTexture;
 float4 _ProjectionVector;
 float4x4 _InverseViewMatrix;
 
-float2 _Opacity; // Background, Effect
+float3 _Opacity; // Background, Front, Effect
 float4 _EffectParams; // param, intensity, sin(r), cos(r)
 
 // Linear distance to Z depth
@@ -135,8 +135,7 @@ void FullScreenPass(Varyings varyings,
                     out float outDepth : SV_Depth)
 {
     // Calculate the UV coordinates from varyings
-    float2 uv =
-      (varyings.positionCS.xy + float2(0.5, 0.5)) * _ScreenSize.zw;
+    float2 uv = (varyings.positionCS.xy + float2(0.5, 0.5)) * _ScreenSize.zw;
 
     // Color/depth samples
     float4 c = tex2D(_ColorTexture, uv);
@@ -145,23 +144,30 @@ void FullScreenPass(Varyings varyings,
     // Inverse projection
     float3 p = DistanceToWorldPosition(uv, d);
 
-#if !defined(RCAM_NOFX)
+    // BG/FG
+    float3 srgb = FastLinearToSRGB(c.rgb);
+    float3 bg = FastSRGBToLinear(srgb * _Opacity.x);
+
+#if defined(RCAM_NOFX)
+
+    float3 fg = FastSRGBToLinear(srgb * _Opacity.y);
+
+#else
 
     // Source pixel luma value
-    float lum = Luminance(FastLinearToSRGB(c.rgb));
+    float lum = Luminance(c.rgb);
 
     // Foreground effect
     float3 eff = ForegroundEffect(p, uv, lum);
-    c.rgb = lerp(c.rgb, eff, c.a * _Opacity.y);
+    float3 fg = lerp(c.rgb, eff, _Opacity.z);
+    fg = fg * _Opacity.y;
 
 #endif
 
-    // BG opacity
-    float3 bg = FastSRGBToLinear(FastLinearToSRGB(c.rgb) * _Opacity.x);
-    c.rgb = lerp(bg, c.rgb, c.a);
+    c.rgb = lerp(bg, fg, c.a);
 
     // Depth mask
-    bool mask = c.a > 0.5 || _Opacity.x > 0;
+    bool mask = c.a < 0.5 ? _Opacity.x > 0 : _Opacity.y > 0;
 
     // Output
     outColor = c;

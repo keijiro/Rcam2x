@@ -9,9 +9,10 @@ public sealed class RcamBackgroundController : MonoBehaviour
 {
     #region Public properties
 
-    public bool IsActive => true;
+    public bool IsActive => _opacity.back > 0 || _opacity.front > 0;
     public int PassNumber => _currentEffect;
-    public bool BackFill { get; set; } = true;
+    public bool BackFill { get; set; }
+    public bool FrontFill { get; set; }
     public int EffectNumber { get; set; }
     public float EffectDirection { get; set; }
     public float EffectParameter { get; set; }
@@ -21,8 +22,7 @@ public sealed class RcamBackgroundController : MonoBehaviour
 
     #region Private variables
 
-    float _backOpacity;
-    float _effectOpacity;
+    (float back, float front, float effect) _opacity;
     int _currentEffect;
 
     #endregion
@@ -39,7 +39,7 @@ public sealed class RcamBackgroundController : MonoBehaviour
     {
         if (_material == null) _material = new Material(_shader);
 
-        var oparams = new Vector2(_backOpacity, _effectOpacity);
+        var oparams = new Vector3(_opacity.back, _opacity.front, _opacity.effect);
         var phi = EffectDirection * Mathf.PI * 2;
         var eparams = new Vector4
           (EffectParameter, EffectIntensity, Mathf.Sin(phi), Mathf.Cos(phi));
@@ -63,14 +63,18 @@ public sealed class RcamBackgroundController : MonoBehaviour
 
         // BG opacity animation
         var dir = BackFill ? 1 : -1;
-        _backOpacity = Mathf.Clamp01(_backOpacity + dir * delta);
+        _opacity.back = Mathf.Clamp01(_opacity.back + dir * delta);
+
+        // FG opacity animation
+        dir = FrontFill ? 1 : -1;
+        _opacity.front = Mathf.Clamp01(_opacity.front + dir * delta);
 
         // Effect opacity animation
         dir = _currentEffect == EffectNumber ? 1 : -1;
-        _effectOpacity = Mathf.Clamp01(_effectOpacity + dir * delta);
+        _opacity.effect = Mathf.Clamp01(_opacity.effect + dir * delta);
 
         // We can switch the effect when the opacity becomes zero.
-        if (_currentEffect != EffectNumber && _effectOpacity == 0)
+        if (_currentEffect != EffectNumber && _opacity.effect == 0)
             _currentEffect = EffectNumber;
     }
 

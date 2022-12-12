@@ -18,7 +18,7 @@ public sealed class RcamRecolorController : MonoBehaviour
 
     #region Public members
 
-    public bool IsActive => _backOpacity > 0 || _frontOpacity > 0;
+    public bool IsActive => _opacity.back > 0 || _opacity.front > 0;
     public bool BackFill { get; set; }
     public bool FrontFill { get; set; }
     public void ShuffleColors() => RandomizeGradientsAndColors();
@@ -27,9 +27,7 @@ public sealed class RcamRecolorController : MonoBehaviour
 
     #region Private variables
 
-    float _backOpacity;
-    float _frontOpacity;
-
+    (float back, float front) _opacity;
     Gradient _backGradient = new Gradient();
     Gradient _frontGradient = new Gradient();
     Color _lineColor;
@@ -87,7 +85,7 @@ public sealed class RcamRecolorController : MonoBehaviour
     {
         if (_material == null) _material = new Material(_shader);
 
-        var fillParams = new Vector3(_backOpacity, _frontOpacity, _dithering);
+        var fillParams = new Vector3(_opacity.back, _opacity.front, _dithering);
         var lineParams = new Vector2(_lineThreshold, _lineContrast);
 
         _material.SetLinearGradient("_BackGradient", _backGradient);
@@ -113,8 +111,8 @@ public sealed class RcamRecolorController : MonoBehaviour
     void Update()
     {
         var delta = Time.deltaTime * 10;
-         _backOpacity = Mathf.Clamp01( _backOpacity + ( BackFill ? 1 : -1) * delta);
-        _frontOpacity = Mathf.Clamp01(_frontOpacity + (FrontFill ? 1 : -1) * delta);
+        _opacity.back  = Mathf.Clamp01(_opacity.back  + ( BackFill ? 1 : -1) * delta);
+        _opacity.front = Mathf.Clamp01(_opacity.front + (FrontFill ? 1 : -1) * delta);
     }
 
     #endregion
