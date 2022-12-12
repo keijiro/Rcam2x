@@ -5,7 +5,6 @@ sampler2D _ColorTexture;
 sampler2D _DepthTexture;
 float4 _ProjectionVector;
 float4x4 _InverseViewMatrix;
-float _DepthOffset;
 
 float2 _Opacity; // Background, Effect
 float4 _EffectParams; // param, intensity, sin(r), cos(r)
@@ -166,5 +165,5 @@ void FullScreenPass(Varyings varyings,
 
     // Output
     outColor = c;
-    outDepth = DistanceToDepth(d + _DepthOffset) * mask;
+    outDepth = DistanceToDepth(d) * mask;
 }
