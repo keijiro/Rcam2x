@@ -1,5 +1,10 @@
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/RenderPass/CustomPass/CustomPassCommon.hlsl"
+
+#if defined(RCAM_FX0)
+#include "Packages/jp.keijiro.noiseshader/Shader/SimplexNoise2D.hlsl"
+#elif defined(RCAM_FX1)
 #include "Packages/jp.keijiro.noiseshader/Shader/SimplexNoise3D.hlsl"
+#endif
 
 sampler2D _ColorTexture;
 sampler2D _DepthTexture;
@@ -30,52 +35,52 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
 {
 #if defined(RCAM_FX0)
 
-    // Animated zebra
+    // FX0: Zebra
 
-    // Noise field positions
-    float np1 = wpos.y *  4 - _Time.y * 1.4;
-    float np2 = wpos.y * 16 - _Time.y * 6.8;
+    // Noise field sample positions
+    float2 np1 = float2(wpos.y * 10 - _Time.y *  2, 0.1);
+    float2 np2 = float2(wpos.y * 40 - _Time.y * 10, 0.2);
 
     // Potential value
-    float pt = abs((luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2) / 4);
+    float pt = (luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2) / 4;
+
+    // Threshold value
+    float thresh = 0.6 + 0.4 * SimplexNoise(float2(_Time.y * 2.2, 0.3));
+    thresh = thresh * thresh;
 
     // Grayscale
-    float thresh = _EffectParams.x;
-    float gray = 1 - smoothstep(thresh - 0.4, thresh - 0.01, pt);
-
-    // Intensity
-    float i = 1 + _EffectParams.y * 8;
+    float gray = 1 - smoothstep(thresh - 0.4, thresh, abs(pt));
 
     // Output
-    return gray * i;
+    return gray * 4;
 
 #endif
 
 #if defined(RCAM_FX1)
 
-    // Marble-like pattern
+    // FX1: Aura
 
-    // Frequency
-    float freq = lerp(2.75, 20, _EffectParams.x);
+    // Noise field sample position
+    float3 np1 = wpos * 0.9 + float3( 0.12, -0.76, 0.03) * _Time.y;
+    float3 np2 = wpos * 1.4 + float3(-0.01, -0.44, 0.04) * _Time.y;
 
-    // Noise field position
-    float3 np = wpos * float3(1.2, freq, 1.2);
-    np += float3(0, -0.784, 0) * _Time.y;
+    // Noise sample
+    float n1 = SimplexNoise(np1);
+    float4 n2 = SimplexNoiseGrad(np2);
 
-    // Potential value
-    float pt = 0.5 + (luma - 0.5) * 0.4 + SimplexNoise(np) * 0.7;
+    // Gradient
+    const float3 A = 8;
+    const float3 B = float3(0.1, 0.2, 0.2) * n2.xyz;
+    const float3 C = float3(0.8, 0.5, 0.5);
+    float3 srgb = sin(A * n1) * B + C;
 
-    // Random seed
-    uint seed = (uint)(pt * 5 + _Time.y * 5) * 2;
+    // Secondary gradient
+    srgb = lerp(srgb, 1 - srgb, smoothstep(-0.04, 0.04, n2));
 
-    // Color
-    float3 rgb = FastSRGBToLinear(HsvToRgb(float3(Hash(seed), 1, 1)));
+    // Highlight
+    float hi = smoothstep(0.5, 0, abs(n2));
 
-    // Emission
-    float em = Hash(seed + 1) < _EffectParams.y * 0.5;
-
-    // Output
-    return rgb * (1 + em * 8) + em;
+    return FastSRGBToLinear(srgb) * (1 + hi * 20);
 
 #endif
 
