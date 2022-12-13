@@ -13,6 +13,7 @@ float4x4 _InverseViewMatrix;
 
 float2 _Opacity;
 float2 _Direction;
+float3 _EffectParams;
 
 // Linear distance to Z depth
 float DistanceToDepth(float d)
@@ -48,11 +49,10 @@ float3 PixelEffect(float3 wpos, float3 rgb, float luma)
     float2 np2 = float2(wpos.y * 40 - _Time.y * 10, 0.2);
 
     // Potential value
-    float pt = (luma - 0.5) + SimplexNoise(np1) + SimplexNoise(np2) / 4;
+    float pt = (luma - 0.5) * 0.2 + SimplexNoise(np1) + SimplexNoise(np2) / 4;
 
     // Threshold value
-    float thresh = 0.6 + 0.4 * SimplexNoise(float2(_Time.y * 2.2, 0.3));
-    thresh = thresh * thresh;
+    float thresh = _EffectParams.x;
 
     // Grayscale
     float gray = 1 - smoothstep(thresh - 0.4, thresh, abs(pt));
@@ -121,11 +121,11 @@ float3 PixelEffect(float3 wpos, float3 rgb, float luma)
     float3 fill = FastSRGBToLinear(HsvToRgb(float3(hue, 1, 1)));
 
     // Threshold
-    float thresh1 = 0.5 + 0.45 * sin(_Time.y * 0.56);
-    float thresh2 = 0.6 + 0.4 * sin(_Time.y * 0.78);
+    bool flag1 = _EffectParams.y > Hash(seed2 + 1);
+    bool flag2 = _EffectParams.z > frac(pt);
 
     // Color blending
-    rgb = Hash(seed2 + 1) < thresh1 && frac(pt) < thresh2 ? fill * 5 : rgb;
+    rgb = flag1 && flag2 ? fill * 5 : rgb;
 
     // Output
     return rgb;
