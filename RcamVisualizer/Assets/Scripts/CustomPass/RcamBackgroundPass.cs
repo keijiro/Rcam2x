@@ -1,12 +1,9 @@
-using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
 namespace Rcam2 {
 
-//
 // HDRP custom fullscreen pass for drawing camera images
-//
 sealed class RcamBackgroundPass : CustomPass
 {
     #region Editable attributes

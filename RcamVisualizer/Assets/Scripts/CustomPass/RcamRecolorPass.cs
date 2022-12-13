@@ -1,12 +1,9 @@
-using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
 namespace Rcam2 {
 
-//
 // HDRP custom fullscreen pass for postprocessing recolor effects
-//
 sealed class RcamRecolorPass : CustomPass
 {
     #region Editable attributes

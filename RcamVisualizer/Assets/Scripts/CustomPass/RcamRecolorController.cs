@@ -3,11 +3,21 @@ using Klak.Chromatics;
 
 namespace Rcam2 {
 
-//
 // Controller and data provider for RcamRecolorPass
-//
 public sealed class RcamRecolorController : MonoBehaviour
 {
+    #region Public members
+
+    public bool IsActive => BackFill || FrontFill;
+    public Material SharedMaterial => UpdateMaterial();
+
+    public bool BackFill { get; set; }
+    public bool FrontFill { get; set; }
+
+    public void ShuffleColors() => RandomizeGradientsAndColors();
+
+    #endregion
+
     #region Editable attributes
 
     [SerializeField, Range(0, 1)] float _dithering = 0.5f;
@@ -16,18 +26,8 @@ public sealed class RcamRecolorController : MonoBehaviour
 
     #endregion
 
-    #region Public members
-
-    public bool IsActive => _opacity.back > 0 || _opacity.front > 0;
-    public bool BackFill { get; set; }
-    public bool FrontFill { get; set; }
-    public void ShuffleColors() => RandomizeGradientsAndColors();
-
-    #endregion
-
     #region Private variables
 
-    (float back, float front) _opacity;
     Gradient _backGradient = new Gradient();
     Gradient _frontGradient = new Gradient();
     Color _lineColor;
@@ -79,21 +79,19 @@ public sealed class RcamRecolorController : MonoBehaviour
 
     Material _material;
 
-    public Material SharedMaterial => UpdateMaterial();
-
     Material UpdateMaterial()
     {
         if (_material == null) _material = new Material(_shader);
 
-        var fillParams = new Vector3(_opacity.back, _opacity.front, _dithering);
-        var lineParams = new Vector2(_lineThreshold, _lineContrast);
+        var opacity = new Vector2(BackFill ? 1 : 0, FrontFill ? 1 : 0);
 
         _material.SetLinearGradient("_BackGradient", _backGradient);
         _material.SetLinearGradient("_FrontGradient", _frontGradient);
-        _material.SetVector("_FillParams", fillParams);
-
-        _material.SetColor("_LineColor", _lineColor);
-        _material.SetVector("_LineParams", lineParams);
+        _material.SetColor("_EdgeColor", _lineColor);
+        _material.SetFloat("_EdgeThreshold", _lineThreshold);
+        _material.SetFloat("_EdgeContrast", _lineContrast);
+        _material.SetFloat("_Dithering", _dithering);
+        _material.SetVector("_Opacity", opacity);
 
         return _material;
     }
@@ -102,18 +100,9 @@ public sealed class RcamRecolorController : MonoBehaviour
 
     #region MonoBehaviour implementation
 
-    void Start()
-      => RandomizeGradientsAndColors();
+    void Start() => RandomizeGradientsAndColors();
 
-    void OnDestroy()
-      => Destroy(_material);
-
-    void Update()
-    {
-        var delta = Time.deltaTime * 10;
-        _opacity.back  = Mathf.Clamp01(_opacity.back  + ( BackFill ? 1 : -1) * delta);
-        _opacity.front = Mathf.Clamp01(_opacity.front + (FrontFill ? 1 : -1) * delta);
-    }
+    void OnDestroy() => Destroy(_material);
 
     #endregion
 }

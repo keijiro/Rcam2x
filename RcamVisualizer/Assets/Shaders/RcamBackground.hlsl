@@ -11,8 +11,8 @@ sampler2D _DepthTexture;
 float4 _ProjectionVector;
 float4x4 _InverseViewMatrix;
 
-float3 _Opacity; // background, front, effect
-float4 _EffectParams; // param, intensity, sin(r), cos(r)
+float2 _Opacity;
+float2 _Direction;
 
 // Linear distance to Z depth
 float DistanceToDepth(float d)
@@ -30,9 +30,15 @@ float3 DistanceToWorldPosition(float2 uv, float d)
     return mul(_InverseViewMatrix, float4(p * d, 1)).xyz;
 }
 
-// Foreground effect
-float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
+// Per-pixel effects
+float3 PixelEffect(float3 wpos, float3 rgb, float luma)
 {
+#if defined(RCAM_NOFX)
+
+    return rgb;
+
+#endif
+
 #if defined(RCAM_FX0)
 
     // FX0: Zebra
@@ -63,6 +69,7 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     // Noise field sample position
     float3 np1 = wpos * 0.9 + float3( 0.12, -0.76, 0.03) * _Time.y;
     float3 np2 = wpos * 1.4 + float3(-0.01, -0.44, 0.04) * _Time.y;
+    np2.y += (luma - 0.5) * 0.1;
 
     // Noise sample
     float n1 = SimplexNoise(np1);
@@ -101,7 +108,7 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     float speed = lerp(0.7, 4, Hash(seed1 + 1));
 
     // Effect direction
-    float3 dir = float3(_EffectParams.z, 0, _EffectParams.w);
+    float3 dir = float3(_Direction.x, 0, _Direction.y);
 
     // Potential value (scrolling strips)
     float pt = (dot(wpos, dir) + 100 + _Time.y * speed) * width;
@@ -113,9 +120,6 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     float hue = frac(_Time.y * 0.123 + Hash(seed2) * 0.3);
     float3 fill = FastSRGBToLinear(HsvToRgb(float3(hue, 1, 1)));
 
-    // Color from texture
-    float3 rgb = tex2D(_ColorTexture, uv).rgb;
-
     // Threshold
     float thresh1 = 0.5 + 0.45 * sin(_Time.y * 0.56);
     float thresh2 = 0.6 + 0.4 * sin(_Time.y * 0.78);
@@ -125,12 +129,6 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
 
     // Output
     return rgb;
-
-#endif
-
-#if defined(RCAM_NOFX)
-
-    return 0;
 
 #endif
 }
@@ -149,32 +147,16 @@ void FullScreenPass(Varyings varyings,
     // Inverse projection
     float3 p = DistanceToWorldPosition(uv, d);
 
-    // BG/FG
-    float3 srgb = FastLinearToSRGB(c.rgb);
-    float3 bg = FastSRGBToLinear(srgb * _Opacity.x);
+    // Input pixel luma
+    float lum = Luminance(FastLinearToSRGB(c.rgb));
 
-#if defined(RCAM_NOFX)
+    // Per-pixel effects
+    float3 eff = PixelEffect(p, c.rgb, lum);
 
-    float3 fg = FastSRGBToLinear(srgb * _Opacity.y);
-
-#else
-
-    // Source pixel luma value
-    float lum = Luminance(c.rgb);
-
-    // Foreground effect
-    float3 eff = ForegroundEffect(p, uv, lum);
-    float3 fg = lerp(c.rgb, eff, _Opacity.z);
-    fg = fg * _Opacity.y;
-
-#endif
-
-    c.rgb = lerp(bg, fg, c.a);
-
-    // Depth mask
+    // Fill mask
     bool mask = c.a < 0.5 ? _Opacity.x > 0 : _Opacity.y > 0;
 
     // Output
-    outColor = c;
+    outColor = float4(lerp(c.rgb, eff, c.a) * mask, c.a);
     outDepth = DistanceToDepth(d) * mask;
 }
