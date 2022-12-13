@@ -119,8 +119,8 @@ public sealed class InputHandle : MonoBehaviour
 
             for (var bit = 0; bit < 8; bit++)
             {
-                if (_buttons[bit]) bdata += 1 << bit;
-                if (_toggles[bit]) tdata += 1 << bit;
+                if (_buttons[bit + i * 8]) bdata += 1 << bit;
+                if (_toggles[bit + i * 8]) tdata += 1 << bit;
             }
 
             state.SetButtonData(i, bdata);
@@ -142,8 +142,8 @@ public sealed class InputHandle : MonoBehaviour
 
             for (var bit = 0; bit < 8; bit++)
             {
-                _buttons[bit] = (bdata & (1 << bit)) != 0;
-                _toggles[bit] = (tdata & (1 << bit)) != 0;
+                _buttons[bit + i * 8] = (bdata & (1 << bit)) != 0;
+                _toggles[bit + i * 8] = (tdata & (1 << bit)) != 0;
             }
         }
 
