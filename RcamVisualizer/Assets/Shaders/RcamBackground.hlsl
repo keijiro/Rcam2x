@@ -86,19 +86,19 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
 
 #if defined(RCAM_FX2)
 
-    // Slicer seed calculation
+    // FX2: Slicer
 
     // Slice frequency (1/height)
     float freq = 60;
 
     // Per-slice random seed
-    uint seed1 = floor(wpos.y * freq + 200) * 2;
+    uint seed1 = floor(wpos.y * freq + 200 + _Time.y) * 2;
 
     // Random slice width
-    float width = lerp(0.5, 2, Hash(seed1));
+    float width = lerp(2, 5, Hash(seed1));
 
     // Random slice speed
-    float speed = lerp(1.0, 5, Hash(seed1 + 1));
+    float speed = lerp(0.7, 4, Hash(seed1 + 1));
 
     // Effect direction
     float3 dir = float3(_EffectParams.z, 0, _EffectParams.w);
@@ -109,23 +109,22 @@ float3 ForegroundEffect(float3 wpos, float2 uv, float luma)
     // Per-strip random seed
     uint seed2 = (uint)floor(pt) * 0x87893u;
 
-    // Color mapping with per-strip UV displacement
-    float2 disp = float2(Hash(seed2), Hash(seed2 + 1)) - 0.5;
-    float3 cm = tex2D(_ColorTexture, frac(uv + disp * 0.1)).rgb;
-
     // Per-strip random color
-    float3 cr = HsvToRgb(float3(Hash(seed2 + 2), 1, 1));
+    float hue = frac(_Time.y * 0.123 + Hash(seed2) * 0.3);
+    float3 fill = FastSRGBToLinear(HsvToRgb(float3(hue, 1, 1)));
 
-    // Color selection (color map -> random color -> black)
-    float sel = Hash(seed2 + 3);
-    float3 rgb = sel < _EffectParams.x * 2 ? cr : cm;
-    rgb = sel < _EffectParams.x * 2 - 1 ? 0 : rgb;
+    // Color from texture
+    float3 rgb = tex2D(_ColorTexture, uv).rgb;
 
-    // Emission
-    float3 em = Hash(seed2 + 4) < _EffectParams.y * 0.5;
+    // Threshold
+    float thresh1 = 0.5 + 0.45 * sin(_Time.y * 0.56);
+    float thresh2 = 0.6 + 0.4 * sin(_Time.y * 0.78);
+
+    // Color blending
+    rgb = Hash(seed2 + 1) < thresh1 && frac(pt) < thresh2 ? fill * 5 : rgb;
 
     // Output
-    return rgb * (1 + em * 8) + em;
+    return rgb;
 
 #endif
 

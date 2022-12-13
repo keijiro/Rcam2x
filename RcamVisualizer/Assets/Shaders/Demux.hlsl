@@ -3,7 +3,7 @@ float4 _MainTex_TexelSize;
 
 float2 TC2UV(float2 uv, float2 scale, float2 offset)
 {
-    float2 halfOffs = _MainTex_TexelSize.xy / 2;
+    float2 halfOffs = _MainTex_TexelSize.xy / float2(-2, 2);
     return (uv + halfOffs) * scale + offset - halfOffs;
 }
 
