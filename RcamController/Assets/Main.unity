@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12729394, g: 0.1341429, b: 0.121147014, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731689, g: 0.13414702, b: 0.1210784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3318,6 +3318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727098076}
   - component: {fileID: 727098077}
+  - component: {fileID: 727098078}
   m_Layer: 5
   m_Name: Knob 19
   m_TagString: Untagged
@@ -3407,6 +3408,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &727098078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727098075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52119cc1349749d9991dd24a4b7d647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &778590965
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,6 +7350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599221119}
   - component: {fileID: 1599221120}
+  - component: {fileID: 1599221121}
   m_Layer: 5
   m_Name: Knob 18
   m_TagString: Untagged
@@ -7426,6 +7440,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1599221121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599221118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52119cc1349749d9991dd24a4b7d647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620065042
 GameObject:
   m_ObjectHideFlags: 0
