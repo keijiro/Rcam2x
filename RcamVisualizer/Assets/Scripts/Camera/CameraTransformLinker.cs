@@ -4,7 +4,7 @@ namespace Rcam2 {
 
 sealed class CameraTransformLinker : MonoBehaviour
 {
-    void Update()
+    void LateUpdate()
     {
         var recv = Singletons.Receiver;
         transform.position = recv.CameraPosition;
