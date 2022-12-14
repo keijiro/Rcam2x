@@ -39,7 +39,7 @@ sealed class Controller : MonoBehaviour
 
     NdiSender _ndiSender;
     Matrix4x4 _projection;
-    RenderTexture _senderRT;
+    (RenderTexture latest, RenderTexture delayed) _senderRT;
     (Material bg, Material mux) _material;
 
     #endregion
@@ -52,6 +52,14 @@ sealed class Controller : MonoBehaviour
                         ProjectionMatrix = _projection,
                         DepthRange = new Vector2(_minDepth, _maxDepth),
                         InputState = _input.InputState };
+
+    RenderTexture NewRT()
+    {
+        var rt = new RenderTexture(_width, _height, 0);
+        rt.wrapMode = TextureWrapMode.Clamp;
+        rt.Create();
+        return rt;
+    }
 
     #endregion
 
@@ -129,23 +137,23 @@ sealed class Controller : MonoBehaviour
         _cameraBackground.useCustomMaterial = true;
 
         // Render texture for the NDI source
-        _senderRT = new RenderTexture(_width, _height, 0);
-        _senderRT.wrapMode = TextureWrapMode.Clamp;
-        _senderRT.Create();
+        _senderRT = (NewRT(), NewRT());
 
         // NDI sender instantiation
         _ndiSender = gameObject.AddComponent<NdiSender>();
         _ndiSender.SetResources(_ndiResources);
         _ndiSender.ndiName = "Rcam";
         _ndiSender.captureMethod = CaptureMethod.Texture;
-        _ndiSender.sourceTexture = _senderRT;
+        _ndiSender.sourceTexture = _senderRT.delayed;
     }
+
 
     void OnDestroy()
     {
         Destroy(_material.bg);
         Destroy(_material.mux);
-        Destroy(_senderRT);
+        Destroy(_senderRT.latest);
+        Destroy(_senderRT.delayed);
     }
 
     void OnEnable()
@@ -164,28 +172,18 @@ sealed class Controller : MonoBehaviour
 
     void Update()
     {
+        // Metadata update
+        _ndiSender.metadata = MakeMetadata().Serialize();
+
         // Parameter update
         var range = new Vector2(_minDepth, _maxDepth);
         _material.bg.SetVector(ShaderID.DepthRange, range);
         _material.mux.SetVector(ShaderID.DepthRange, range);
 
         // NDI sender RT update
-        Graphics.Blit(null, _senderRT, _material.mux, 0);
+        Graphics.CopyTexture(_senderRT.latest, _senderRT.delayed);
+        Graphics.Blit(null, _senderRT.latest, _material.mux, 0);
     }
-
-    //
-    // Update the NDI metadata in OnRenderObject
-    //
-    // The camera transform is updated in Application.onBeforeRender, so we
-    // have to update the metadata (containing the camera transform data) after
-    // it. Also we have to do it before the NDI sender update that happens in
-    // WaitForEndOfFrame.
-    //
-    // It may look strange to do this here, but this is the most
-    // straightforward way to collect the latest data.
-    //
-    void OnRenderObject()
-      => _ndiSender.metadata = MakeMetadata().Serialize();
 
     #endregion
 }
