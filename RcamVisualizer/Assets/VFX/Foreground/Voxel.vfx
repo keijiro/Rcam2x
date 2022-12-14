@@ -212,7 +212,7 @@ MonoBehaviour:
   m_SubgraphDependencies:
   - {fileID: 5371698748595113096, guid: 7ce19b8052c078a40916f74f413bc54d, type: 3}
   - {fileID: 5371698745253816930, guid: b8d62f770efb92843a5eb66713e320e7, type: 3}
-  - {fileID: 5371698748595113096, guid: 0a549cbffc5ec6047b058865fc41beea, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 5371698745253816930, guid: e356402c160b5314caa50bad6ae260ca, type: 3}
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616665}
   m_ExposedName: Throttle
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 4
   m_Category: 
   m_Min:
     m_Type:
@@ -2978,7 +2978,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.0,"g":1.0,"b":1.0,"a":1.0}'
+      m_SerializableObject: '{"r":0.37892913818359377,"g":0.37892913818359377,"b":0.37892913818359377,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: Base Color
