@@ -117,7 +117,7 @@ float3 PixelEffect(float3 wpos, float3 rgb, float luma)
     uint seed2 = (uint)floor(pt) * 0x87893u;
 
     // Per-strip random color
-    float hue = frac(_Time.y * 0.123 + Hash(seed2) * 0.3);
+    float hue = frac(_Time.y * 0.033 + Hash(seed2) * 0.3);
     float3 fill = FastSRGBToLinear(HsvToRgb(float3(hue, 1, 1)));
 
     // Threshold
