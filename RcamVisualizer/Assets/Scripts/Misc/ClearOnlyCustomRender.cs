@@ -7,7 +7,12 @@ namespace Rcam2 {
 [ExecuteInEditMode]
 sealed class ClearOnlyCustomRender : MonoBehaviour
 {
-    Color ClearColor => GetComponent<HDAdditionalCameraData>().backgroundColorHDR;
+    Color ClearColor
+      => GetComponent<HDAdditionalCameraData>().backgroundColorHDR;
+
+    Rect FullViewport
+      => new Rect(0, 0, GetComponent<Camera>().pixelWidth,
+                        GetComponent<Camera>().pixelHeight);
 
     void OnEnable()
       => GetComponent<HDAdditionalCameraData>().customRender += CustomRender;
@@ -23,6 +28,7 @@ sealed class ClearOnlyCustomRender : MonoBehaviour
             new RenderTargetIdentifier(BuiltinRenderTextureType.CameraTarget);
 
         var cmd = CommandBufferPool.Get("Clear Only");
+        cmd.SetViewport(FullViewport);
         cmd.ClearRenderTarget(true, true, ClearColor, 1);
         context.ExecuteCommandBuffer(cmd);
         CommandBufferPool.Release(cmd);
