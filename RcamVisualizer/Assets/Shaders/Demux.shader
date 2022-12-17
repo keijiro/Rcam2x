@@ -1,6 +1,10 @@
 Shader "Hidden/Rcam2/Demux"
 {
-    Properties { _MainTex("", 2D) = "black"{} }
+    Properties
+    {
+        _MainTex("", 2D) = "black"{}
+        _LutTex("", 3D) = "black"{}
+    }
     SubShader
     {
         Cull Off ZWrite Off ZTest Always

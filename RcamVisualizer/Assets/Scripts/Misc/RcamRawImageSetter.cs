@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Rcam2 {
 
 sealed class RcamRawImageSetter : MonoBehaviour
 {
-    Material _material;
+    RawImage _ui;
 
     void Start()
-      => _material = GetComponent<MeshRenderer>().material;
+      => _ui = GetComponent<RawImage>();
 
     void Update()
-      => _material.mainTexture = Singletons.Receiver.ColorTexture;
+      => _ui.texture = Singletons.Receiver.ColorTexture;
 }
 
 } // namespace Rcam2

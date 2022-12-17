@@ -1,5 +1,9 @@
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+
 sampler2D _MainTex;
 float4 _MainTex_TexelSize;
+
+sampler3D _LutTex;
 
 float2 TC2UV(float2 uv, float2 scale, float2 offset)
 {
@@ -23,6 +27,7 @@ float4 Fragment(float4 vertex : SV_Position,
 {
     float3 rgb = tex2D(_MainTex, TC2UV(texCoord, float2(0.5, 1), 0)).xyz;
     float mask = tex2D(_MainTex, TC2UV(texCoord, 0.5, float2(0.5, 0))).x;
+    rgb = FastSRGBToLinear(tex3D(_LutTex, FastLinearToSRGB(rgb)).rgb);
     return float4(rgb, mask);
 }
 

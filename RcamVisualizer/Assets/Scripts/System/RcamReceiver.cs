@@ -12,6 +12,7 @@ sealed class RcamReceiver : MonoBehaviour
     #region External scene object references
 
     [SerializeField] NdiReceiver _ndiReceiver = null;
+    [SerializeField] Texture3D _lut = null;
 
     #endregion
 
@@ -50,7 +51,10 @@ sealed class RcamReceiver : MonoBehaviour
     #region MonoBehaviour implementation
 
     void Start()
-      => _demuxMaterial = new Material(_demuxShader);
+    {
+        _demuxMaterial = new Material(_demuxShader);
+        _demuxMaterial.SetTexture("_LutTex", _lut);
+    }
 
     void OnDestroy()
     {
