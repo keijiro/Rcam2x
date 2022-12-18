@@ -35,8 +35,6 @@ float4 Fragment(float4 vertex : SV_Position,
 
 #ifdef RCAM_DEMUX_DEPTH
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-
 // Rcam parameters
 float2 _DepthRange;
 
@@ -53,7 +51,8 @@ float RGB2Hue(float3 c)
     float r = (c.g - c.b) * div;
     float g = 1.0 / 3 + (c.b - c.r) * div;
     float b = 2.0 / 3 + (c.r - c.g) * div;
-    return lerp(r, lerp(g, b, c.g < c.b), c.r < max(c.g, c.b));
+    float h = lerp(r, lerp(g, b, c.g < c.b), c.r < max(c.g, c.b));
+    return frac(h + 1);
 }
 
 // Depth decoding
@@ -66,13 +65,6 @@ float DecodeDepth(float3 rgb, float2 range)
     depth = (depth - DepthHuePadding) / (1 - DepthHuePadding * 2);
     // Depth range
     return lerp(range.x, range.y, depth);
-}
-
-// Depth calculation
-float RGB2Depth(float3 rgb)
-{
-    float hue = RGB2Hue(LinearToSRGB(rgb));
-    return lerp(_DepthRange.x, _DepthRange.y, hue);
 }
 
 float4 Fragment(float4 vertex : SV_Position,
