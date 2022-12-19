@@ -11,7 +11,7 @@
   "dependencies": {
     "com.unity.render-pipelines.high-definition": "14.0.4",
     "com.unity.visualscripting": "1.7.8",
-    "jp.keijiro.kino.feedback": "1.0.1",
+    "jp.keijiro.kino.feedback": "1.0.3",
     "jp.keijiro.kino.post-processing": "2.1.15",
     "jp.keijiro.klak.lineargradient": "1.0.2",
     "jp.keijiro.klak.motion": "1.0.2",
