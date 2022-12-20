@@ -7,7 +7,7 @@ namespace Rcam2 {
 // Receiver class that extracts image components and
 // control data from NDI frames
 //
-sealed class RcamReceiver : MonoBehaviour
+public sealed class RcamReceiver : MonoBehaviour
 {
     #region External scene object references
 
