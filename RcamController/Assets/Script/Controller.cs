@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 using Klak.Ndi;
 
@@ -61,12 +62,25 @@ sealed class Controller : MonoBehaviour
         return rt;
     }
 
+    System.Collections.IEnumerator ResetSystemCoroutine()
+    {
+        _input.Button15 = true;
+        yield return null;
+        yield return null;
+
+        _input.Button15 = false;
+        yield return null;
+        yield return null;
+
+        SceneManager.LoadScene(0);
+    }
+
     #endregion
 
     #region Public method (UI callback)
 
-    public void ResetOrigin()
-      => _camera.transform.parent.position = -_camera.transform.localPosition;
+    public void ResetSystem()
+      => StartCoroutine(ResetSystemCoroutine());
 
     #endregion
 
