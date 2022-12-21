@@ -29,7 +29,7 @@ MonoBehaviour:
   active: 1
   block:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   drift:
     m_OverrideState: 1
     m_Value: 1
@@ -37,8 +37,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   jump:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
   shake:
     m_OverrideState: 1
     m_Value: 1
