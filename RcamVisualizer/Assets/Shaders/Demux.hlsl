@@ -1,14 +1,25 @@
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Macros.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
 
-sampler2D _MainTex;
+TEXTURE2D(_MainTex);
+TEXTURE3D(_LutTex);
 float4 _MainTex_TexelSize;
 
-sampler3D _LutTex;
-
-float2 TC2UV(float2 uv, float2 scale, float2 offset)
+uint2 UV2TC(float2 uv, float2 scale, float2 offset)
 {
-    float2 halfOffs = _MainTex_TexelSize.xy / float2(-2, 2);
-    return (uv + halfOffs) * scale + offset - halfOffs;
+    return (uv * scale + offset) * _MainTex_TexelSize.zw;
+}
+
+float3 ApplyLUT(float3 rgb)
+{
+    // scaleOffset = (1 / lut_size, lut_size - 1)
+    const float2 so = float2(1.0 / 17, 16);
+    rgb = FastLinearToSRGB(rgb);
+    rgb = ApplyLut3D(TEXTURE3D_ARGS(_LutTex, s_linear_clamp_sampler), rgb, so);
+    rgb = FastSRGBToLinear(rgb);
+    return rgb;
 }
 
 void Vertex(float4 vertex : POSITION,
@@ -25,10 +36,11 @@ void Vertex(float4 vertex : POSITION,
 float4 Fragment(float4 vertex : SV_Position,
                 float2 texCoord : TEXCOORD0) : SV_Target
 {
-    float3 rgb = tex2D(_MainTex, TC2UV(texCoord, float2(0.5, 1), 0)).xyz;
-    float mask = tex2D(_MainTex, TC2UV(texCoord, 0.5, float2(0.5, 0))).x;
-    rgb = FastSRGBToLinear(tex3D(_LutTex, FastLinearToSRGB(rgb)).rgb);
-    return float4(rgb, mask);
+    uint2 tc1 = UV2TC(texCoord, float2(0.5, 1), 0);
+    uint2 tc2 = UV2TC(texCoord, 0.5, float2(0.5, 0));
+    float3 rgb = LOAD_TEXTURE2D(_MainTex, tc1).xyz;
+    float mask = LOAD_TEXTURE2D(_MainTex, tc2).x;
+    return float4(ApplyLUT(rgb), mask);
 }
 
 #endif
@@ -70,7 +82,8 @@ float DecodeDepth(float3 rgb, float2 range)
 float4 Fragment(float4 vertex : SV_Position,
                 float2 texCoord : TEXCOORD) : SV_Target
 {
-    float3 rgb = tex2D(_MainTex, TC2UV(texCoord, 0.5, 0.5)).xyz;
+    uint2 tc = UV2TC(texCoord, 0.5, 0.5);
+    float3 rgb = LOAD_TEXTURE2D(_MainTex, tc).xyz;
     return DecodeDepth(LinearToSRGB(rgb), _DepthRange);
 }
 
